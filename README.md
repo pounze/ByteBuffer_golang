@@ -31,11 +31,11 @@ To put long value that is uint64 in golang
 
 byteBuffer.PutLong(20)
 
-# To put float value that is float32 in golang
+To put float value that is float32 in golang
 
 byteBuffer.PutFloat(20.0)
 
-# To put double value that is float64 in golang
+To put double value that is float64 in golang
 
 byteBuffer.PutDouble(20.0)
 
