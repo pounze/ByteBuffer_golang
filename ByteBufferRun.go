@@ -71,6 +71,9 @@ func main(){
 		fmt.Println(err)
 	}
 	
+	fmt.Println(byteBuffer.Bytes2Str(data))
+
+	fmt.Println(byteBuffer.Str2Bytes(byteBuffer.Bytes2Str(data)))
 
 	//var sampl1Data = byteBuffer.Get(len(sampleData))
 

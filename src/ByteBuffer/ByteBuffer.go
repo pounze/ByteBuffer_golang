@@ -1,7 +1,6 @@
 package ByteBuffer
 
 import (
-	_"fmt"
 	"errors"
 	"bytes"
 	"encoding/binary"
@@ -222,4 +221,88 @@ func (obj *Buffer) Slice(start int, end int) error{
 
 	return nil
 
+}
+
+func (obj *Buffer) Bytes2Str(data []byte) string{
+
+	return string(data)
+
+}
+
+func (obj *Buffer) Str2Bytes(data string) []byte{
+
+	return []byte(data)
+
+}
+
+func (obj *Buffer) Bytes2Short(data []byte) uint16{
+
+	return binary.BigEndian.Uint16(data)
+}
+
+func (obj *Buffer) Bytes2Int(data []byte) uint32{
+
+	return binary.BigEndian.Uint32(data)
+
+}
+
+func (obj *Buffer) Bytes2Long(data []byte) uint64{
+
+	return binary.BigEndian.Uint64(data)
+
+}
+
+func (obj *Buffer) Short2Bytes(data uint16) []byte{
+
+	bs := make([]byte, 2)
+
+	binary.BigEndian.PutUint16(bs, data)
+
+	return bs
+}
+
+func (obj *Buffer) Int2Bytes(data uint32) []byte{
+
+	bs := make([]byte, 4)
+
+	binary.BigEndian.PutUint32(bs, data)
+
+	return bs
+
+}
+
+func (obj *Buffer) Long2Bytes(data uint64) []byte{
+
+	bs := make([]byte, 8)
+
+	binary.BigEndian.PutUint64(bs, data)
+
+	return bs
+
+}
+
+func Bytes2Float(bytes []byte) float32 {
+    bits := binary.BigEndian.Uint32(bytes)
+    float := math.Float32frombits(bits)
+    return float
+}
+
+func Float2Bytes(float float32) []byte {
+    bits := math.Float32bits(float)
+    bytes := make([]byte, 4)
+    binary.BigEndian.PutUint32(bytes, bits)
+    return bytes
+}
+
+func Bytes2Double(bytes []byte) float64 {
+    bits := binary.BigEndian.Uint64(bytes)
+    float := math.Float64frombits(bits)
+    return float
+}
+
+func Double2Bytes(float float64) []byte {
+    bits := math.Float64bits(float)
+    bytes := make([]byte, 8)
+    binary.BigEndian.PutUint64(bytes, bits)
+    return bytes
 }
