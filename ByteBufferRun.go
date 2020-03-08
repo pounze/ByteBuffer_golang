@@ -7,7 +7,9 @@ import (
 
 func main(){
 	
-	var byteBuffer = ByteBuffer.Buffer{}
+	var byteBuffer = ByteBuffer.Buffer{
+		endian:"big"
+	}
 
 	byteBuffer.PutShort(20)
 
