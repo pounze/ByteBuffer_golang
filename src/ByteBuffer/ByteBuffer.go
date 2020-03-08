@@ -12,7 +12,7 @@ type Buffer struct{
 
 	packetBuffer bytes.Buffer
 
-	endian string
+	Endian string
 
 }
 
@@ -24,7 +24,7 @@ func (obj *Buffer) Wrap(data []byte) {
 
 func (obj *Buffer) PutShort(value int) {
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return
@@ -33,11 +33,11 @@ func (obj *Buffer) PutShort(value int) {
 
 	var buff = make([]byte, 2)
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		binary.BigEndian.PutUint16(buff, uint16(value))
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		binary.LittleEndian.PutUint16(buff, uint16(value))
 
@@ -68,7 +68,7 @@ func (obj *Buffer) GetShort() []byte{
 
 func (obj *Buffer) PutInt(value int) {
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return
@@ -77,11 +77,11 @@ func (obj *Buffer) PutInt(value int) {
 
 	var buff = make([]byte, 4)
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		binary.BigEndian.PutUint32(buff, uint32(value))
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		binary.LittleEndian.PutUint32(buff, uint32(value))
 
@@ -112,7 +112,7 @@ func (obj *Buffer) GetInt() []byte{
 
 func (obj *Buffer) PutLong(value int) {
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return
@@ -121,11 +121,11 @@ func (obj *Buffer) PutLong(value int) {
 
 	var buff = make([]byte, 8)
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		binary.BigEndian.PutUint64(buff, uint64(value))
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		binary.LittleEndian.PutUint64(buff, uint64(value))
 
@@ -155,7 +155,7 @@ func (obj *Buffer) GetLong() []byte{
 
 func (obj *Buffer) PutFloat(value float32) {
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return
@@ -166,11 +166,11 @@ func (obj *Buffer) PutFloat(value float32) {
 
 	var buff = make([]byte, 4)
 	
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		binary.BigEndian.PutUint32(buff, bits)
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		binary.LittleEndian.PutUint32(buff, bits)
 
@@ -200,7 +200,7 @@ func (obj *Buffer) GetFloat() []byte{
 
 func (obj *Buffer) PutDouble(value float64) {
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return
@@ -211,11 +211,11 @@ func (obj *Buffer) PutDouble(value float64) {
 
 	var buff = make([]byte, 8)
 	
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		binary.BigEndian.PutUint64(buff, bits)
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		binary.LittleEndian.PutUint64(buff, bits)
 
@@ -337,18 +337,18 @@ func (obj *Buffer) Str2Bytes(data string) []byte{
 
 func (obj *Buffer) Bytes2Short(data []byte) uint16{
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return 0
 		
 	}
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		return binary.BigEndian.Uint16(data)
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		return binary.LittleEndian.Uint16(data)
 
@@ -359,18 +359,18 @@ func (obj *Buffer) Bytes2Short(data []byte) uint16{
 
 func (obj *Buffer) Bytes2Int(data []byte) uint32{
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return 0
 		
 	}
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		return binary.BigEndian.Uint32(data)
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		return binary.LittleEndian.Uint32(data)
 
@@ -381,18 +381,18 @@ func (obj *Buffer) Bytes2Int(data []byte) uint32{
 
 func (obj *Buffer) Bytes2Long(data []byte) uint64{
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return 0
 		
 	}
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		return binary.BigEndian.Uint64(data)
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		return binary.LittleEndian.Uint64(data)
 
@@ -403,7 +403,7 @@ func (obj *Buffer) Bytes2Long(data []byte) uint64{
 
 func (obj *Buffer) Short2Bytes(data uint16) []byte{
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return nil
@@ -412,11 +412,11 @@ func (obj *Buffer) Short2Bytes(data uint16) []byte{
 
 	bs := make([]byte, 2)
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		binary.BigEndian.PutUint16(bs, data)
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		binary.LittleEndian.PutUint16(bs, data)
 
@@ -427,7 +427,7 @@ func (obj *Buffer) Short2Bytes(data uint16) []byte{
 
 func (obj *Buffer) Int2Bytes(data uint32) []byte{
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return nil
@@ -436,11 +436,11 @@ func (obj *Buffer) Int2Bytes(data uint32) []byte{
 
 	bs := make([]byte, 4)
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		binary.BigEndian.PutUint32(bs, data)
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		binary.LittleEndian.PutUint32(bs, data)
 
@@ -452,7 +452,7 @@ func (obj *Buffer) Int2Bytes(data uint32) []byte{
 
 func (obj *Buffer) Long2Bytes(data uint64) []byte{
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return nil
@@ -461,11 +461,11 @@ func (obj *Buffer) Long2Bytes(data uint64) []byte{
 
 	bs := make([]byte, 8)
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		binary.BigEndian.PutUint64(bs, data)
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		binary.LittleEndian.PutUint64(bs, data)
 
@@ -477,14 +477,14 @@ func (obj *Buffer) Long2Bytes(data uint64) []byte{
 
 func (obj *Buffer) Bytes2Float(bytes []byte) float32 {
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return 0.0
 		
 	}
 
-    if obj.endian == "big"{
+    if obj.Endian == "big"{
 
     	bits := binary.BigEndian.Uint32(bytes)
 
@@ -492,7 +492,7 @@ func (obj *Buffer) Bytes2Float(bytes []byte) float32 {
 
 	    return float
 
-    }else if obj.endian == "little"{
+    }else if obj.Endian == "little"{
 
     	bits := binary.LittleEndian.Uint32(bytes)
 
@@ -507,14 +507,14 @@ func (obj *Buffer) Bytes2Float(bytes []byte) float32 {
 
 func (obj *Buffer) Float2Bytes(float float32) []byte {
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return nil
 		
 	}
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		bits := math.Float32bits(float)
 
@@ -524,7 +524,7 @@ func (obj *Buffer) Float2Bytes(float float32) []byte {
 
 	    return bytes
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		bits := math.Float32bits(float)
 
@@ -541,14 +541,14 @@ func (obj *Buffer) Float2Bytes(float float32) []byte {
 
 func (obj *Buffer) Bytes2Double(bytes []byte) float64 {
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return 0
 		
 	}
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		bits := binary.BigEndian.Uint64(bytes)
 
@@ -556,7 +556,7 @@ func (obj *Buffer) Bytes2Double(bytes []byte) float64 {
 
 	    return float
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		bits := binary.LittleEndian.Uint64(bytes)
 
@@ -571,14 +571,14 @@ func (obj *Buffer) Bytes2Double(bytes []byte) float64 {
 
 func (obj *Buffer) Double2Bytes(float float64) []byte {
 
-	if obj.endian != "big" && obj.endian == "little"{
+	if obj.Endian != "big" && obj.Endian == "little"{
 
 		fmt.Println("Invalid endianness, must be big or little")
 		return nil
 		
 	}
 
-	if obj.endian == "big"{
+	if obj.Endian == "big"{
 
 		bits := math.Float64bits(float)
 
@@ -588,7 +588,7 @@ func (obj *Buffer) Double2Bytes(float float64) []byte {
 
 	    return bytes
 
-	}else if obj.endian == "little"{
+	}else if obj.Endian == "little"{
 
 		bits := math.Float64bits(float)
 
